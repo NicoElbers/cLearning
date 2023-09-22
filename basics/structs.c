@@ -1,14 +1,55 @@
 #include <stdio.h>
 
+enum {
+  STUDENTLIST_LEN = 80,
+  STUDENTNAME_LEN = 80,
+};
+
 struct Student {
-  int rollno;
-  int age;
-  char name[80];
+  int studentID;
+  char name[STUDENTLIST_LEN];
   float marks;
 };
 
-int main() {
-  struct Student s1, s3;
+void getRecords(struct Student[], int);
+void display(struct Student[], int);
 
-  scanf("%d%d%s%f", &s1.rollno, &s1.age, &s1.name, &s1.marks);
+int main() {
+  struct Student studentList[STUDENTLIST_LEN];
+  int n;
+  int choice;
+  int studentID;
+
+  printf("Number of records you want to enter?\n>");
+  scanf("%d", &n);
+
+  if (n > STUDENTLIST_LEN || n < 1) {
+    printf("ERROR: trying to add an out of bounds amount of records\n");
+    return 7;
+  }
+
+  getRecords(studentList, n);
+  display(studentList, n);
+
+  return 0;
+}
+
+void getRecords(struct Student studentList[STUDENTLIST_LEN], int n) {
+  for (int i = 0; i < n; ++i) {
+    printf("\nEnter data for record #%d\n", i);
+
+    printf("Enter studentID:\n>");
+    scanf("%d", &studentList[i].studentID);
+
+    printf("Enter student name:\n>");
+    scanf("%s", studentList[i].name);
+
+    printf("Enter marks:\n>");
+    scanf("%f", &studentList[i].marks);
+  }
+}
+
+void display(struct Student studentList[STUDENTLIST_LEN], int n) {
+  for (int i = 0; i < n; ++i) {
+  }
 }
