@@ -36,7 +36,7 @@ int main() {
 
 void getRecords(struct Student studentList[STUDENTLIST_LEN], int n) {
   for (int i = 0; i < n; ++i) {
-    printf("\nEnter data for record #%d\n", i);
+    printf("\nEnter data for student #%d\n", i);
 
     printf("Enter studentID:\n>");
     scanf("%d", &studentList[i].studentID);
@@ -51,5 +51,10 @@ void getRecords(struct Student studentList[STUDENTLIST_LEN], int n) {
 
 void display(struct Student studentList[STUDENTLIST_LEN], int n) {
   for (int i = 0; i < n; ++i) {
+    printf("\nData for student #%d\n", i);
+
+    printf("Student name: %s\n", studentList[i].name);
+    printf("Student studentID: %d\n", studentList[i].studentID);
+    printf("Student marks: %f\n", studentList[i].marks);
   }
 }
